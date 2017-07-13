@@ -1,0 +1,13 @@
+{
+	"name" : "Qliksense_R_Opencpu_Integration",
+	"description" : "OPENCPU R Extension Example",
+	"icon" : "table",
+	"type" : "visualization",
+	"version": "2.1",
+	"author" : "Arasaraja Sivan",
+	"homepage" : "http://help.qlik.com/sense/en-US/developer",
+	"keywords" : "qlik-sense, visualization",
+	"license" : "MIT",
+	"repository" : "",
+    "dependencies" : { "qlik-sense" : ">=3.0.x" }
+}
