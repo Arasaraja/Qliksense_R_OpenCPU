@@ -1,0 +1,24 @@
+.qv-object-Qliksense_R_Opencpu_Integration div.qv-object-content-container {
+   /*  font: 16px arial;
+    background-color: #515151; */
+	  overflow:auto; 
+}
+.qv-object-Qliksense_R_Opencpu_Integration .node {
+  cursor: pointer;
+}
+
+.qv-object-Qliksense_R_Opencpu_Integration .node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.qv-object-Qliksense_R_Opencpu_Integration .node text {
+  font: 10px sans-serif;
+}
+
+.qv-object-Qliksense_R_Opencpu_Integration .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
