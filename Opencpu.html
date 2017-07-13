@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Call R Through OpenCPU</title> 
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+
+      //When Document is Ready
+      $(function () {
+
+          //Go R button Click Event Handler
+          $("#cmdGoR").click(function () {
+              var resultsUrlPrefix = "http://public.opencpu.org",
+                  url = resultsUrlPrefix + "/ocpu/library/base/R/identity/save";
+              var rCommands = $("#txtRCommands").val();
+              $.post(url,
+              {
+                  x: rCommands
+              },
+              function (data) {
+                
+                var statResultsLink = resultsUrlPrefix + data.toString().match(/.+\/stdout/m),
+                    chartLink = resultsUrlPrefix + data.toString().match(/.+\/graphics\/[1]/m);
+               
+                  //Add statistical (textual) results to results div
+               //   $('#results').append("<br/>");
+               //   $('<div/>', {
+               //       id: 'statResults'
+               //   }).appendTo('#results');
+                
+                  $("#statResults").load(statResultsLink);
+
+                  //Add charts results to results div
+                 // $('#results').append("<br/>");
+                  //  $('<img/>', {
+                   //     id: 'chartResults',
+                    //    src: chartLink
+                    //}).appendTo('#results');
+				$("#chartResults").attr('src', chartLink);
+              })
+              .error(function (jqXHR, status, error) {
+                  alert(jqXHR.responseText);
+              });
+          });
+
+      });
+
+  </script>
+</head>
+<body>
+
+<h3>Set of R Commands</h3>
+<textarea rows="8" cols="80" id="txtRCommands">
+
+x <- rnorm(1000); 
+print(hist(x));
+
+</textarea> 
+<br />
+<input type="button" value="Run code" id="cmdGoR" />
+
+<div id="results" style="height:600px;width:850px;border-style: groove;overflow: auto;">
+<br>
+<div id="statResults">  </div>
+<br>
+<img id="chartResults" >
+</div>
+
+</body>
+</html>
